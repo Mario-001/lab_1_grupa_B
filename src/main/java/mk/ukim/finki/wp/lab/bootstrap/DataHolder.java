@@ -37,11 +37,11 @@ public class DataHolder
         players.add(new Player("2","Stephen",
                 "Curry","Point Guard",30));
         players.add(new Player("3","Luka",
-                "Dončić","Point Guard",0));
+                "Doncic","Point Guard",0));
         players.add(new Player("4","Jayson",
                 "Tatum","Small Forward",0));
         players.add(new Player("5","Nikola",
-                "Jokić","Center",15));
+                "Jokic","Center",15));
         players.add(new Player("6","Giannis",
                 "Antetokounmpo","Power Forward",34));
         players.add(new Player("7","Kevin",

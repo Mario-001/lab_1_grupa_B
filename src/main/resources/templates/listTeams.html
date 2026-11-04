@@ -29,7 +29,7 @@
 
         <th:block th:each="team : ${teams}">
 
-            <input type="radio" name="teamID" th:id="'team_' + ${team.getId()}" th:value="${team.getId()}">
+            <input type="radio" name="teamId" th:id="'team_' + ${team.getId()}" th:value="${team.getId()}">
 
             <label th:for="'team_' + ${team.getId()}"
                    th:text="'Name: ' + ${team.getName()} + ', City: '
