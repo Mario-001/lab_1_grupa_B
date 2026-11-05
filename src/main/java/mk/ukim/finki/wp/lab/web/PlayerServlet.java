@@ -40,19 +40,18 @@ public class PlayerServlet extends HttpServlet
 
         context.setVariable("errorMessage", req.getParameter("errorMessage"));
 
-        try
-        {
-            String teamId = req.getParameter("teamId");
-            Team selectedTeam = teamService.findById(Long.parseLong(teamId));
+        String teamId = req.getParameter("teamId");
 
-            context.setVariable("players", playerService.listPlayers());
-            context.setVariable("selectedTeam", selectedTeam);
-
-        }
-        catch ( IllegalArgumentException I )
+        if( teamId == null || teamId.isEmpty() )
         {
             resp.sendRedirect("/teams");
+            return;
         }
+
+        Team selectedTeam = teamService.findById(Long.parseLong(teamId));
+
+        context.setVariable("players", playerService.listPlayers());
+        context.setVariable("selectedTeam", selectedTeam);
 
         springTemplateEngine.process("playersList.html",context,resp.getWriter());
     }

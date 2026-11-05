@@ -27,7 +27,7 @@ public class PlayerServiceImpl implements PlayerService
     @Override
     public Player findByPlayerId(String playerId)
     {
-        return playerRepository.findByPlayerId(playerId).orElseThrow(() -> new IllegalArgumentException());
+        return playerRepository.findByPlayerId(playerId).orElseThrow(IllegalArgumentException::new);
 
     }
 }

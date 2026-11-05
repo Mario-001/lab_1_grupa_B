@@ -38,11 +38,15 @@
     <h1>Select the Player to add to the Team</h1>
 </header>
 <!-- Display the errorMessage here (only if it exists), using the "error" class -->
+
+<div th:if="${errorMessage != null}">
+    <p th:text="${errorMessage}" class="error"></p>
+</div>
 <section>
     <h2>Select player:</h2>
     <form action="/teamDetails" method="POST">
         <!-- Hidden field with the selected teamId -->
-        <input type="hidden">
+        <input type="hidden" name="teamId" th:value="${selectedTeam.getId()}">
         <!-- Dynamically display radio buttons for each player,
              the value should be the playerId
              and the displayed text should be:
@@ -50,11 +54,11 @@
 
         <th:block th:each="player : ${players}">
 
-            <input type="radio" name="playerId" th:id="'team_' + ${player.getPlayerId}"
-                   th:value="${player.getPlayerId}">
-            <label th:for="player_ + ${player.getPlayerId}"
-                   th:text="${player.getFirstName} + ' ' + ${player.getLastName} +
-                   ' ' + ${player.getJerseyNumber}"></label>
+            <input type="radio" name="playerId" th:id="'player_' + ${player.getPlayerId()}"
+                   th:value="${player.getPlayerId()}">
+            <label th:for="'player_' + ${player.getPlayerId()}"
+                   th:text="${player.getFirstName()} + ' ' + ${player.getLastName()} +
+                   ' ' + ${player.getJerseyNumber()}"></label>
                 <br>
         </th:block>
 

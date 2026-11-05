@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="utf-8">
+    <title>Team Details</title>
+    <style type="text/css">
+        body {
+            width: 800px;
+            margin: auto;
+            font-family: Arial, sans-serif;
+        }
+        h1 {
+            color: #333;
+        }
+        ul {
+            list-style-type: none;
+            padding: 0;
+        }
+        li {
+            padding: 5px;
+            margin: 5px 0;
+            background-color: #f5f5f5;
+            border-radius: 3px;
+        }
+    </style>
+</head>
+<body>
+<!-- Dynamically display data -->
+<header>
+    <h1>Team: Skopje Eagles</h1>
+</header>
+<section>
+    <h2>City: Skopje</h2>
+    <h2>Players in this team:</h2>
+    <ul>
+        <li>Marko Ilievski (#10, Midfielder)</li>
+        <li>Ana Petreska (#9, Forward)</li>
+    </ul>
+    <!-- Show "No players yet" if the team has no players -->
+    <p>
+        <a href="/players?teamId=1">Add another player</a> |
+        <a href="/teams">Back to teams</a>
+    </p>
+</section>
+</body>
+</html>
