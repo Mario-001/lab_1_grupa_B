@@ -27,18 +27,30 @@
 <body>
 <!-- Dynamically display data -->
 <header>
-    <h1>Team: Skopje Eagles</h1>
+    <h1 th:text="'Team: ' + ${team.getName()}"></h1>
 </header>
 <section>
-    <h2>City: Skopje</h2>
+    <h2 th:text="'City: ' + ${team.getCity()}"></h2>
     <h2>Players in this team:</h2>
-    <ul>
-        <li>Marko Ilievski (#10, Midfielder)</li>
-        <li>Ana Petreska (#9, Forward)</li>
-    </ul>
+    <th:block>
+        <ul>
+
+            <li th:each="player: ${team.getPlayers()}"
+                th:text=" ${player.getFirstName()} + '(#' + ${player.getJerseyNumber()} +
+             ', ' + ${player.getPosition()} + ')'"></li>
+
+        </ul>
+
+    </th:block>
+
     <!-- Show "No players yet" if the team has no players -->
+
+    <div th:if="${team.players.size() == 0}">
+        <p>nema igraci ig</p>
+    </div>
+
     <p>
-        <a href="/players?teamId=1">Add another player</a> |
+        <a th:href="'/players?teamId=' + ${team.getId()}">Add another player</a> |
         <a href="/teams">Back to teams</a>
     </p>
 </section>

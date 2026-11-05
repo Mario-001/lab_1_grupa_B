@@ -49,17 +49,18 @@ public class TeamDetailsServlet extends HttpServlet
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException
     {
         String selected_team_id = req.getParameter("teamId");
-        String selected_player_id = req.getParameter("teamId");
+        String selected_player_id = req.getParameter("playerId");
 
         try
         {
             teamService.addPlayerToTeam(Long.parseLong(selected_team_id),selected_player_id);
 
-            resp.sendRedirect("/teamDetails?teamId=" + selected_player_id);
+            resp.sendRedirect("/teamDetails?teamId=" + selected_team_id);
         }
         catch ( IllegalArgumentException e )
         {
-            resp.sendRedirect("/players?teamId=" + selected_team_id + "&errorMessage=ne cini");
+            String ex = e.getMessage();
+            resp.sendRedirect("/players?teamId=" + selected_team_id + "&errorMessage=" + ex);
         }
 
     }
