@@ -1,6 +1,6 @@
-package mk.ukim.finki.wp.lab.Service.impl;
+package mk.ukim.finki.wp.lab.service.impl;
 
-import mk.ukim.finki.wp.lab.Service.TeamService;
+import mk.ukim.finki.wp.lab.service.TeamService;
 import mk.ukim.finki.wp.lab.model.Player;
 import mk.ukim.finki.wp.lab.model.Team;
 import mk.ukim.finki.wp.lab.repository.PlayerRepository;
@@ -71,12 +71,18 @@ public class TeamServiceImpl implements TeamService
 
         if( jersyPlayer.isPresent() )
         {
-            throw new IllegalArgumentException(" Jersey number " +
+            throw new IllegalArgumentException("Jersey number " +
                     jersyPlayer.get().getJerseyNumber() + " is already taken in this team");
         }
 
         team.getPlayers().add(player);
 
         return teamRepository.save(team);
+    }
+
+    @Override
+    public void delete(Long id)
+    {
+        teamRepository.delete(id);
     }
 }

@@ -39,7 +39,7 @@
 </header>
 <!-- Display the errorMessage here (only if it exists), using the "error" class -->
 
-<div th:if="${errorMessage != null}">
+<div th:if="${errorMessage}">
     <p th:text="${errorMessage}" class="error"></p>
 </div>
 <section>
@@ -58,7 +58,7 @@
                    th:value="${player.getPlayerId()}">
             <label th:for="'player_' + ${player.getPlayerId()}"
                    th:text="${player.getFirstName()} + ' ' + ${player.getLastName()} +
-                   ' ' + ${player.getJerseyNumber()}"></label>
+                   ' (#' + ${player.getJerseyNumber()} + ', ' + ${player.getPosition()} + ')'" ></label>
                 <br>
         </th:block>
 

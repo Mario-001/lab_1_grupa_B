@@ -36,7 +36,7 @@
         <ul>
 
             <li th:each="player: ${team.getPlayers()}"
-                th:text=" ${player.getFirstName()} + '(#' + ${player.getJerseyNumber()} +
+                th:text=" ${player.getFirstName()} + ' ' + ${player.getLastName()} +' (#' + ${player.getJerseyNumber()} +
              ', ' + ${player.getPosition()} + ')'"></li>
 
         </ul>
@@ -46,7 +46,7 @@
     <!-- Show "No players yet" if the team has no players -->
 
     <div th:if="${team.players.size() == 0}">
-        <p>nema igraci ig</p>
+        <p>No players yet</p>
     </div>
 
     <p>

@@ -27,16 +27,18 @@ public class InMemoryTeamRepository implements TeamRepository
     @Override
     public Team save(Team team)
     {
-        Optional<Team> postoi = DataHolder.teams.stream().filter( t -> t.getId().equals(team.getId()))
-                .findFirst();
-
-        if( postoi.isPresent() )
-        {
-            return team;
-        }
+        DataHolder.teams.removeIf( t -> t.getId().equals(team.getId()));
 
         DataHolder.teams.add(team);
 
         return team;
     }
+
+    @Override
+    public void delete(Long id)
+    {
+        DataHolder.teams.removeIf( t -> t.getId().equals(id));
+    }
+
+
 }

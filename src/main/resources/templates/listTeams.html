@@ -33,13 +33,15 @@
 
             <label th:for="'team_' + ${team.getId()}"
                    th:text="'Name: ' + ${team.getName()} + ', City: '
-                   + ${team.getCity()} + ', Players' + ${team.getPlayers().size()} "></label>
+                   + ${team.getCity()} + ', Players: ' + ${team.getPlayers().size()} "></label>
 
             <br>
 
         </th:block>
 
         <input type="submit" value="Submit">
+        <input type="submit" value="Delete Team"
+               formaction="/teams/delete" formmethod="POST">
 
     </form>
 </main>
